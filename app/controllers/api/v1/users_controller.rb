@@ -10,17 +10,24 @@ class Api::V1::UsersController < ApplicationController
   end
   def create
     @user=User.new(user_params)
-    if @user.save 
+    if @user.save
         render json: { message: "user successfully created", token: "xyz" }
     else
        render json:  @user.errors, status: 401
     end
   end
-  def update 
+  def update
     if @user.update(user_params)
         render json: { message: "user successfully updated" }, status: 201
     else
        render json:  @user.errors, status: 401
+    end
+  end
+  def destroy
+    if @user.distory
+      render json: { message: "user deleted successfully" }, status: 200
+    else
+      render json: @user.errors, status: 500
     end
   end
   private

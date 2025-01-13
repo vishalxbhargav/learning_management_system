@@ -1,0 +1,24 @@
+<div class="flex ">
+    <div class="w-[40%] h-screen ">
+    <h1 class="text-center font-semibold py-2 ">List of Chapter</h1>
+    <div class="pt-8 px-4 gap-2">
+        <div class="flex justify-center py-3 text-white rounded-sm cursor-pointer">
+            <p class="py-2 px-5 inline-block bg-blue-400"><%= link_to "Add new Chapter", new_admin_course_chapter(@course) %></p>
+        </div>
+        <div class="px-3">
+            <% @course.chapters.each do |chapter|%>
+                <p class="flex justify-center items-center text-center border-b h-10 bg-blue-100 my-2"><%=chapter.name%></p>
+            <%end%>
+        </div>
+        
+    </div>
+    </div>
+    <div class="w-[75%] flex flex-col justify-center pt-8 px-4">
+        <%=@course.chapters.each do |chapter|%>
+            <p class="text-center pt-6"><%=chapter.name%></p>
+            <div class="flex flex-col justify-center items-center">
+                <%=chapter.content%>
+            <div>
+        <%end%>
+    </div>
+</div>

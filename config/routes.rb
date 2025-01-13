@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
   namespace :admin do
+    resources :courses do
+      resources :chapters, shallow: true
+    end
   end
   namespace :api do
     namespace :v1 do
-      resources :users
+      resources :users do
+        resources :courses, shallow: true
+        resources :reviews, shallow: true
+      end
+      post "/enrollment/:user_id/:course_id", to: "enrollments#create"
+      get "/enrollment/status/:user_id/:course_id", to: "enrollments#status"
+      post "/enrollment/status/:user_id/:course_id", to: "enrollments#status_update"
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

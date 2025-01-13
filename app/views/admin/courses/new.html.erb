@@ -1,0 +1,48 @@
+<div class="h-screen w-screen bg-gray-100">
+    <h1 class="h-10 bg-white flex justify-center items-center border-b">Add new Chapter</h1>
+    <div class="flex justify-center items-center ">
+        <div class="h-[500px] w-[400px] flex justify-center items-center">
+            <%=form_with model:[:admin,@course] do |form|%>
+                <div>
+                    <div>
+                        <%= form.label :title %>
+                    </div>
+                    <div class="flex w-full">
+                        <%= form.text_field :title %>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <%= form.label :duration %>
+                    </div>
+                    <div class="flex w-full">
+                        <%= form.number_field :duration %>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <%= form.label :price %>
+                    </div>
+                    <div class="flex w-full">
+                        <%= form.text_field :price %>
+                    </div>
+                </div>
+                <div class="py-2">
+                    <div>
+                        <%=form.label :category%>
+                    </div>
+                    <div class="py-2">
+                        <%= form.collection_select :category_id, Category.order(:name), :id, :name, prompt: "Choose a Category" %>
+                    </div>
+                </div>
+                <div class="flex justify-center py-2 text-white">
+                    <div class="inline-block bg-blue-500 py-2 px-4 rounded">
+                    <%= form.submit %>
+                    <div>
+                </div>
+            <%end%>
+        </div>
+    </div>
+<div>
+
+

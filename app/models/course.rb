@@ -3,5 +3,6 @@ class Course < ApplicationRecord
   has_many :enrollments
   has_many :users, through: :enrollments
   has_many :reviews
-  has_one :categories, class_name: "Category", foreign_key: "category_id"
+  has_many :chapters
+  belongs_to :category, class_name: "Category", optional: true
 end

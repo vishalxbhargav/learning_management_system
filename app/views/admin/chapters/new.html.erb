@@ -1,0 +1,30 @@
+<div class="h-screen w-screen bg-gray-100">
+    <h1 class="h-10 bg-white flex justify-center items-center border-b">Add new Chapter</h1>
+    <div class="flex justify-center items-center">
+        <%=form_with model:@chapter,url:admin_course_chapters_path(@course) do |form|%>
+            <div>
+            <div>
+                <%= form.label :name %>
+            </div>
+            <div class="flex w-full">
+                <%= form.text_field :name %>
+            </div>
+            </div>
+            <div>
+            <div>
+                <%= form.label :content %>
+            </div>
+            <div>
+                <%= form.rich_text_area :content %>
+            </div>
+            </div>
+            <div class="flex justify-center py-2 text-white">
+                <div class="inline-block bg-blue-500 py-2 px-4 rounded">
+                <%= form.submit %>
+                <div>
+            </div>
+        <%end%>
+    </div>
+<div>
+
+

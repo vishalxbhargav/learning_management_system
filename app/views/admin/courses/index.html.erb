@@ -1,0 +1,40 @@
+<h1 class="h-10 border-b text-center py-1">Course List</h1>
+<div class="w-[45%] pt-5 mx-auto flex justify-between items-center ">
+    <div class="flex flex-col gap-1">
+        <h3 class="font-semibold">Course</h3>
+        <p class="text-[0.8rem]">List out all the available courses</p>
+    </div>
+    <div>
+        <p class="py-2 px-4 bg-blue-500 rounded text-white">Add Course</p>
+    </div>
+</div>
+<div>
+    <div class="pt-8 flex justify-center">
+        <table class="table-auto">
+            <thead class="bg-blue-100">
+                <tr>
+                <th class="px-4">Sno</th>
+                <th class="px-4">title</th>
+                <th class="px-4">duration</th>
+                <th class="px-4">price</ht>
+                <th class="px-4"></th>
+                <th class="px-4"></th>
+                <th class="px-4"></th>
+                </tr>
+            </thead>
+            <tbody class="text-center ">
+                <%@courses.each.with_index do |course,index|%>
+                    <tr class="border-b-2 ">
+                    <td class="px-4"><%=index+1 %></td>
+                    <td class="px-4"><%=course.title%></td>
+                    <td class="px-4"><%=course.duration%></td>
+                    <td class="px-4"><%=course.price%></td>
+                    <td class="px-4 text-blue-600"><%= link_to "edit",edit_admin_course_path(course) %></td>
+                    <td class="px-4 text-blue-600"><%= link_to 'delete', method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+                    <td class="px-4 text-blue-600"> <%= link_to "show", admin_course_path(course) %></td>
+                    </tr>
+                <%end%>
+            </tbody>
+        </table>
+    </div>
+</div>
