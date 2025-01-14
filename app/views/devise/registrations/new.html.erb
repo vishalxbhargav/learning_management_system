@@ -1,0 +1,33 @@
+<div class="pt-8 bg-white inline-block flex flex-col  justify-center items-center ">
+  <h2 class="py-4">Sign up</h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="field py-2">
+      <%= f.label :email %><br />
+      <%= f.email_field :email,class:"py-2 px-3 border-2 rounded",placeholder: "Enter your email", autofocus: true, autocomplete: "email" %>
+    </div>
+    <div class="field py-2">
+      <%= f.label :username %><br />
+      <%= f.email_field :username,class:"py-2 px-3 border-2 rounded",placeholder: "Enter your username", autofocus: true, autocomplete: "username" %>
+    </div>
+    <div class="field py-2">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password,class:"py-2 px-3 border-2 rounded",placeholder: "Enter your password", autocomplete: "new-password" %>
+    </div>
+
+    <div class="field py-2">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation,class:"py-2 px-3 border-2 rounded",placeholder: "Enter your conform_password", autocomplete: "new-password" %>
+    </div>
+
+    <div class="actions py-3">
+      <p class="text-center py-2 px-4 bg-blue-500 text-white rounded"><%= f.submit "Sign up" %></p>
+    </div>
+  <% end %>
+
+  <p>already have accound ? <span class="text-blue-600"><%= render "devise/shared/links" %></span></p>
+
+</div>

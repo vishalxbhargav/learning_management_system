@@ -4,7 +4,6 @@ class Admin::ChaptersController < ApplicationController
     @chapter = @course.chapters.new
   end
   def create
-    debugger
     @chapter=Chapter.new(chapter_params)
     if @chapter.save
       @chapter
@@ -14,6 +13,9 @@ class Admin::ChaptersController < ApplicationController
   end
   private
   def chapter_params
-    params.expect(chapter: [ :name, :content, :course_id ])
+    debugger
+    hash = params.require(:chapter).permit(:name, :content)
+    hash.merge!(course_id: params[:course_id])
+    hash
   end
 end

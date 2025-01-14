@@ -3,7 +3,7 @@
     <h1 class="text-center font-semibold py-2 ">List of Chapter</h1>
     <div class="pt-8 px-4 gap-2">
         <div class="flex justify-center py-3 text-white rounded-sm cursor-pointer">
-            <p class="py-2 px-5 inline-block bg-blue-400"><%= link_to "Add new Chapter", new_admin_course_chapter(@course) %></p>
+            <p class="py-2 px-5 inline-block bg-blue-400"><%= link_to "Add new chapter", new_admin_course_chapter_path(@course) %></p>
         </div>
         <div class="px-3">
             <% @course.chapters.each do |chapter|%>

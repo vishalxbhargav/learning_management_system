@@ -1,20 +1,22 @@
 Rails.application.routes.draw do
+  devise_for :users
+  root to: "home#index"
   namespace :admin do
     resources :courses do
       resources :chapters, shallow: true
     end
   end
-  namespace :api do
-    namespace :v1 do
-      resources :users do
-        resources :courses, shallow: true
-        resources :reviews, shallow: true
-      end
-      post "/enrollment/:user_id/:course_id", to: "enrollments#create"
-      get "/enrollment/status/:user_id/:course_id", to: "enrollments#status"
-      post "/enrollment/status/:user_id/:course_id", to: "enrollments#status_update"
-    end
-  end
+  # namespace :api do
+  #   namespace :v1 do
+  #     resources :users do
+  #       resources :courses, shallow: true
+  #       resources :reviews, shallow: true
+  #     end
+  #     post "/enrollment/:user_id/:course_id", to: "enrollments#create"
+  #     get "/enrollment/status/:user_id/:course_id", to: "enrollments#status"
+  #     post "/enrollment/status/:user_id/:course_id", to: "enrollments#status_update"
+  #   end
+  # end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
