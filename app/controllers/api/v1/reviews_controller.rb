@@ -11,11 +11,12 @@ class Api::V1::ReviewsController < ApplicationController
       render json: { message: "user don't have reviews" }, status: 500
     end
   end
+
   def show
     render json: @review, status: 200
   end
+
   def create
-    debugger
     @review=@user.reviews.new(review_params)
     if @review.save
       render json: { message: "review created" }, status: 201
@@ -23,6 +24,7 @@ class Api::V1::ReviewsController < ApplicationController
       render json: @review.errors, status: 500
     end
   end
+
   def update
     if @review.update(review_params)
       render json: { message: "review updated successfully" }, status: 200
@@ -30,6 +32,7 @@ class Api::V1::ReviewsController < ApplicationController
       render json: @review.errors, status: 500
     end
   end
+
   def destroy
     if @review.destroy
       render json: { message: "review deleted" }
