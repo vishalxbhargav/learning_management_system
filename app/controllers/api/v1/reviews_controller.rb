@@ -40,14 +40,18 @@ class Api::V1::ReviewsController < ApplicationController
       render json: { message: @review.errors }, status: 500
     end
   end
+
   private
+
   def set_review
     @review=Review.find_by(id: params[:id])
     render json: { message: "review not found" }, status: 404 if @review.nil?
   end
+
   def review_params
     params.expect(review: [ :title, :contenet, :rating, :status, :course_id ])
   end
+
   def set_user
     @user=User.find_by(id: params[:user_id].to_i)
     render json: { message: "user not found" }, status: 404 unless @review.nil?
